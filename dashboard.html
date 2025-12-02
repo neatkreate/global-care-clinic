@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard | Global Care Clinic</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Chart.js for interactive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="assets/js/dashboard.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+  <script>
+    // small in-page notification helper (global)
+    function showNotification(message, type = 'success', timeout = 4500) {
+      try {
+        let container = document.getElementById('dashboard-notifications');
+        if (!container) {
+          container = document.createElement('div');
+          container.id = 'dashboard-notifications';
+          container.className = 'dashboard-notifications';
+          container.setAttribute('aria-live','polite');
+          container.setAttribute('aria-atomic','true');
+          document.body.appendChild(container);
+        }
+        const el = document.createElement('div');
+        el.className = 'notif ' + (type === 'error' ? 'error' : 'success');
+        const dismiss = document.createElement('button');
+        dismiss.className = 'notif-dismiss';
+        dismiss.setAttribute('aria-label','Dismiss');
+        dismiss.innerHTML = '&times;';
+        dismiss.addEventListener('click', () => el.remove());
+        const content = document.createElement('div');
+        content.className = 'notif-content';
+        content.textContent = message;
+        el.appendChild(content);
+        el.appendChild(dismiss);
+        container.appendChild(el);
+        const timeout_id = setTimeout(() => { el.remove(); }, timeout);
+        el.addEventListener('mouseenter', () => clearTimeout(timeout_id));
+      } catch (e) { console.warn('notify failed', e); }
+    }
+    window.showNotification = showNotification;
+  </script>
+  <!-- Admin login (shown when not authenticated) -->
+  <section id="admin-login" class="dashboard-login">
+    <h2>Admin Login</h2>
+    <form id="admin-login-form">
+      <div class="field"><label>Username<br/><input name="username" required /></label></div>
+      <div class="field"><label>Password<br/><input name="password" type="password" required /></label></div>
+      <div class="form-actions-right"><button type="submit" class="cta-btn">Sign in</button></div>
+    </form>
+    <p class="hint">Use an admin account to access management features.</p>
+  </section>
+  <!-- Sidebar -->
+  <aside class="dashboard-sidebar">
+    <div class="sidebar-header">
+      <img src="assets/img/logo/logo.png" alt="Global Care Clinic Logo" class="logo" />
+      <h2>Admin Panel</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#appointments">📅 Appointments</a></li>
+        <li><a href="#services">💉 Services</a></li>
+        <li><a href="#blog">📰 Blog Posts</a></li>
+        <li><a href="#staff">👩‍⚕️ Staff Accounts</a></li>
+        <li><a href="#analytics">📊 Analytics</a></li>
+        <li><a href="index.html">↩ Back to Site</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="dashboard-main">
+    <header class="dashboard-header">
+      <h1>Welcome, Admin</h1>
+      <p>Manage clinic operations efficiently</p>
+    </header>
+
+    <!-- Appointments -->
+    <section id="appointments" class="dashboard-section">
+      <h2>Appointments</h2>
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Service</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="appointments-tbody">
+          <!-- real appointments will be loaded here -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="dashboard-section">
+      <h2>Services</h2>
+      <div class="dashboard-card">
+        <p>Edit and update clinic services offered.</p>
+        <button id="manage-services-btn" class="cta-btn">Manage Services</button>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="dashboard-section">
+      <h2>Blog Posts</h2>
+      <div class="dashboard-card">
+        <p>Publish health articles and clinic updates.</p>
+        <button id="create-post-btn" class="cta-btn">Create New Post</button>
+      </div>
+    </section>
+
+    <!-- Staff -->
+    <section id="staff" class="dashboard-section">
+      <h2>Staff Accounts</h2>
+      <div class="dashboard-card">
+        <p>Manage staff login credentials and roles.</p>
+        <button id="manage-staff-btn" class="cta-btn">Manage Staff</button>
+      </div>
+      <!-- Staff Profiles -->
+<section id="staff-profiles" class="dashboard-section">
+  <h2>Staff Profiles</h2>
+  <div class="staff-grid">
+    <article class="staff-card">
+      <img src="assets/img/team/doctor1.jpg" alt="Dr. Ama Mensah" />
+      <h3>Dr. Ama Mensah</h3>
+      <p>Chief Medical Officer</p>
+      <p>Email: ama.mensah@globalcareclinic.com</p>
+    </article>
+
+    <article class="staff-card">
+      <img src="assets/img/team/doctor2.jpg" alt="Dr. Kwame Boateng" />
+      <h3>Dr. Kwame Boateng</h3>
+      <p>Head of Surgery</p>
+      <p>Email: kwame.boateng@globalcareclinic.com</p>
+    </article>
+
+    <article class="staff-card">
+      <img src="assets/img/team/doctor3.jpg" alt="Dr. Sarah Johnson" />
+      <h3>Dr. Sarah Johnson</h3>
+      <p>Pediatric Specialist</p>
+      <p>Email: sarah.johnson@globalcareclinic.com</p>
+    </article>
+  </div>
+</section>
+    </section>
+
+    <!-- Analytics -->
+    <section id="analytics" class="dashboard-section">
+      <h2>Analytics</h2>
+      <div class="chart-container">
+        <canvas id="appointmentsChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="servicesChart"></canvas>
+      </div>
+    </section>
+    <!-- Quick Actions -->
+<section id="quick-actions" class="dashboard-section">
+  <h2>Quick Actions</h2>
+  <div class="quick-actions-grid">
+    <button id="add-appointment-btn" class="quick-action-btn">➕ Add Appointment</button>
+    <button id="new-blog-btn" class="quick-action-btn">📝 New Blog Post</button>
+    <button id="update-services-btn" class="quick-action-btn">⚙️ Update Services</button>
+    <button id="add-staff-btn" class="quick-action-btn">👩‍⚕️ Add Staff Account</button>
+  </div>
+</section>
+<!-- Notifications -->
+<section id="notifications" class="dashboard-section">
+  <h2>Recent Notifications</h2>
+  <div class="notifications-list">
+    <div class="notification">
+      <span class="notif-icon">📅</span>
+      <p><strong>New Appointment:</strong> Sarah Johnson booked a consultation for Dec 5, 2025.</p>
+    </div>
+    <div class="notification">
+      <span class="notif-icon">📰</span>
+      <p><strong>Blog Post Published:</strong> “5 Tips for Healthy Living” is now live.</p>
+    </div>
+    <div class="notification">
+      <span class="notif-icon">💉</span>
+      <p><strong>Service Update:</strong> Diagnostics lab upgraded with new MRI machine.</p>
+    </div>
+    <div class="notification">
+      <span class="notif-icon">👩‍⚕️</span>
+      <p><strong>Staff Added:</strong> Dr. Kwame Boateng joined as Head of Surgery.</p>
+    </div>
+  </div>
+</section>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loginSection = document.getElementById('admin-login');
+      const loginForm = document.getElementById('admin-login-form');
+      const main = document.querySelector('.dashboard-main');
+      const headerTitle = document.querySelector('.dashboard-header h1');
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>"'`]/g, function (s) {
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'})[s];
+        });
+      }
+
+      async function loadDashboardData() {
+        if (!window.dashboardAPI) return;
+        try {
+          const appts = await window.dashboardAPI.fetchAppointments();
+          const tbody = document.getElementById('appointments-tbody');
+          if (tbody) {
+            if (!appts || appts.length === 0) {
+              tbody.innerHTML = '<tr><td colspan="5">No appointments</td></tr>';
+            } else {
+              tbody.innerHTML = appts.map(a => {
+                const patient = escapeHtml(a.name || a.email || 'Unknown');
+                const date = a.requested_at ? new Date(a.requested_at).toLocaleString() : '';
+                const service = escapeHtml(a.service || a.message || '');
+                const status = escapeHtml(a.status || 'pending');
+                return `<tr><td>${patient}</td><td>${date}</td><td>${service}</td><td>${status}</td><td><button class="resend-appt-email" data-id="${a.id}">Resend</button></td></tr>`;
+              }).join('');
+            }
+            // attach resend email click handlers
+            Array.from(tbody.querySelectorAll('.resend-appt-email')).forEach(btn => {
+              btn.addEventListener('click', async function () {
+                const id = this.dataset.id;
+                try {
+                  const token = localStorage.getItem('gcc_token');
+                  if (!token) throw new Error('Not authenticated');
+                  const res = await fetch(`/api/appointments/${id}/resend-email`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                  });
+                  if (!res.ok) throw new Error((await res.json()).error || 'Failed to resend email');
+                  showNotification('Email resent successfully', 'success');
+                } catch (err) {
+                  showNotification(err.message || 'Failed to resend email', 'error');
+                }
+              });
+            });
+          }
+
+          const subs = await window.dashboardAPI.fetchSubmissions();
+          const notifList = document.querySelector('.notifications-list');
+          if (notifList) {
+            if (!subs || subs.length === 0) {
+              notifList.innerHTML = '<div class="notification"><p>No recent submissions</p></div>';
+            } else {
+              notifList.innerHTML = subs.slice(0,6).map(s => `<div class="notification"><span class="notif-icon">✉️</span><p><strong>${escapeHtml(s.fullname)}</strong>: ${escapeHtml(s.subject)}</p></div>`).join('');
+            }
+          }
+        } catch (err) {
+          console.error('Failed to load dashboard data', err);
+        }
+      }
+
+      function showMain(user) {
+        if (loginSection) loginSection.style.display = 'none';
+        if (main) main.style.display = '';
+        if (user && user.full_name && headerTitle) headerTitle.textContent = `Welcome, ${user.full_name}`;
+        // load appointments and submissions
+        loadDashboardData();
+      }
+
+      // initial visibility
+      const token = localStorage.getItem('gcc_token');
+      if (token) {
+        // validate token by calling a protected endpoint
+        fetch('/api/appointments', { headers: { Authorization: `Bearer ${token}` } })
+          .then(r => { if (r.ok) return r.json(); throw new Error('Not authorized'); })
+          .then(() => showMain({ full_name: 'Admin' }))
+          .catch(() => { localStorage.removeItem('gcc_token'); if (loginSection) loginSection.style.display = ''; if (main) main.style.display = 'none'; });
+      } else {
+        if (loginSection) loginSection.style.display = '';
+        if (main) main.style.display = 'none';
+      }
+
+      if (loginForm) {
+        loginForm.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          const username = loginForm.username.value.trim();
+          const password = loginForm.password.value;
+                  if (!username || !password) { showNotification('Enter username and password', 'error'); return; }
+                  if (!window.dashboardAPI || !window.dashboardAPI.adminLogin) { showNotification('Dashboard API not loaded', 'error'); return; }
+          try {
+            const user = await window.dashboardAPI.adminLogin(username, password);
+            showMain(user);
+          } catch (err) {
+            showNotification(err.message || 'Login failed', 'error');
+          }
+        });
+      }
+    });
+  </script>
+    <!-- Modal for admin actions -->
+    <div id="admin-modal" class="admin-modal" aria-hidden="true">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+    <div id="dashboard-notifications" class="dashboard-notifications" aria-live="polite" aria-atomic="true"></div>
+
+    <script>
+      (function () {
+        function showModal(html) {
+          const modal = document.getElementById('admin-modal');
+          const body = document.getElementById('modal-body');
+          if (!modal || !body) return;
+          body.innerHTML = html;
+          modal.style.display = 'flex';
+        }
+        function closeModal() {
+          const modal = document.getElementById('admin-modal');
+          if (modal) modal.style.display = 'none';
+        }
+        // small confirm dialog that uses the admin modal and resolves true/false
+        function showConfirm(message) {
+          return new Promise(resolve => {
+            const modal = document.getElementById('admin-modal');
+            const body = document.getElementById('modal-body');
+            if (!modal || !body) return resolve(window.confirm(message));
+            body.innerHTML = `<div><p>${message}</p><div class="form-actions-right"><button id="confirm-yes" class="cta-btn">Yes</button> <button id="confirm-no" class="cta-btn secondary">No</button></div></div>`;
+            modal.style.display = 'flex';
+            const yes = document.getElementById('confirm-yes');
+            const no = document.getElementById('confirm-no');
+            function cleanup() { yes.removeEventListener('click', onYes); no.removeEventListener('click', onNo); closeModal(); }
+            function onYes() { cleanup(); resolve(true); }
+            function onNo() { cleanup(); resolve(false); }
+            yes.addEventListener('click', onYes);
+            no.addEventListener('click', onNo);
+          });
+        }
+        document.getElementById('modal-close').addEventListener('click', closeModal);
+
+        // Quick action handlers
+        const waitForAPI = () => new Promise(resolve => {
+          if (window.dashboardAPI) return resolve();
+          const t = setInterval(() => { if (window.dashboardAPI) { clearInterval(t); resolve(); } }, 100);
+          setTimeout(() => resolve(), 2000);
+        });
+
+        document.getElementById('add-appointment-btn').addEventListener('click', async function () {
+          await waitForAPI();
+            showModal(`
+            <h3>Add Appointment</h3>
+            <form id="form-add-appointment" class="modal-form">
+              <label>Name<br><input name="name" required class="full-width"/></label>
+              <label>Email<br><input name="email" required class="full-width"/></label>
+              <label>Phone<br><input name="phone" required class="full-width"/></label>
+              <label>Message<br><textarea name="message" required class="full-width"></textarea></label>
+              <div class="form-actions-right"><button type="submit" class="cta-btn">Create</button></div>
+            </form>
+          `);
+          document.getElementById('form-add-appointment').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = { name: form.name.value.trim(), email: form.email.value.trim(), phone: form.phone.value.trim(), message: form.message.value.trim() };
+            try { await window.dashboardAPI.createAppointment(data); showNotification('Appointment created', 'success'); closeModal(); loadDashboardData(); } catch (err) { showNotification(err.message || 'Failed', 'error'); }
+          });
+        });
+
+        document.getElementById('new-blog-btn').addEventListener('click', function () {
+          showModal(`
+            <h3>New Blog Post</h3>
+            <form id="form-new-blog" class="modal-form">
+              <label>Title<br><input name="title" required class="full-width"/></label>
+              <label>Slug (id)<br><input name="id" class="full-width" placeholder="post-123"/></label>
+              <label>Excerpt<br><input name="excerpt" class="full-width"/></label>
+              <label>Content<br><textarea name="content" required class="full-width"></textarea></label>
+              <div class="form-actions-right"><button type="submit" class="cta-btn">Publish</button></div>
+            </form>
+          `);
+          document.getElementById('form-new-blog').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const f = e.target; const post = { id: f.id.value || `post-${Date.now()}`, title: f.title.value.trim(), excerpt: f.excerpt.value.trim(), content: f.content.value.trim(), created_at: new Date().toISOString() };
+            try { await window.dashboardAPI.createBlogPost(post); showNotification('Post created', 'success'); closeModal(); loadDashboardData(); } catch (err) { showNotification(err.message || 'Failed', 'error'); }
+          });
+        });
+
+        document.getElementById('create-post-btn')?.addEventListener('click', function () { document.getElementById('new-blog-btn').click(); });
+
+        document.getElementById('update-services-btn').addEventListener('click', async function () {
+          await waitForAPI();
+          try {
+            const services = await window.dashboardAPI.fetchServices();
+            showModal(`<h3>Services</h3><div id="services-list"></div><hr/><div class="form-actions-right"><button id="add-service-local" class="cta-btn">Add Service</button></div>`);
+            const list = document.getElementById('services-list');
+            list.innerHTML = services.map(s => `<div class="list-item"><strong>${s.title||s.name||'Service'}</strong><div class="list-item-meta">${(s.description||'')}</div><div class="list-item-actions"><button class="edit-service" data-id="${s.id}">Edit</button> <button class="delete-service" data-id="${s.id}">Delete</button></div></div>`).join('');
+            document.getElementById('add-service-local').addEventListener('click', function () {
+            const html = `<h4>Add Service</h4><form id="form-add-service" class="modal-form"><label>Title<br><input name="title" required class="full-width"/></label><label>Description<br><textarea name="description" class="full-width"></textarea></label><div class="form-actions-right"><button class="cta-btn">Save</button></div></form>`;
+            document.getElementById('modal-body').innerHTML = html;
+            document.getElementById('form-add-service').addEventListener('submit', async function (e) {
+              e.preventDefault(); const fd = e.target; const svc = { title: fd.title.value.trim(), description: fd.description.value.trim() };
+              try { await window.dashboardAPI.createService(svc); showNotification('Service created', 'success'); closeModal(); loadDashboardData(); } catch (err) { showNotification(err.message||'Failed', 'error'); }
+            });
+          });
+            // attach edit/delete
+            Array.from(list.querySelectorAll('.edit-service')).forEach(btn => btn.addEventListener('click', async function () {
+              const id = this.dataset.id; const svc = services.find(s=>String(s.id)===String(id));
+              const html = `<h4>Edit Service</h4><form id="form-edit-service" class="modal-form"><label>Title<br><input name="title" value="${svc.title||''}" required class="full-width"/></label><label>Description<br><textarea name="description" class="full-width">${svc.description||''}</textarea></label><div class="form-actions-right"><button class="cta-btn">Save</button></div></form>`;
+              document.getElementById('modal-body').innerHTML = html;
+              document.getElementById('form-edit-service').addEventListener('submit', async function (e) {
+                e.preventDefault(); const fd = e.target; try { await window.dashboardAPI.updateService(id,{ title: fd.title.value.trim(), description: fd.description.value.trim() }); showNotification('Updated', 'success'); closeModal(); loadDashboardData(); } catch (err) { showNotification(err.message||'Failed', 'error'); }
+              });
+            }));
+            Array.from(list.querySelectorAll('.delete-service')).forEach(btn => btn.addEventListener('click', async function () {
+              if (!await showConfirm('Delete this service?')) return; try { await window.dashboardAPI.deleteService(this.dataset.id); showNotification('Deleted', 'success'); closeModal(); loadDashboardData(); } catch (err) { showNotification(err.message||'Failed', 'error'); }
+            }));
+          } catch (err) { showNotification('Failed to load services', 'error'); }
+        });
+
+        document.getElementById('manage-services-btn')?.addEventListener('click', function () { document.getElementById('update-services-btn').click(); });
+
+        document.getElementById('add-staff-btn').addEventListener('click', function () {
+          showModal(`<h3>Add Staff Account</h3><form id="form-add-staff" class="modal-form"><label>Full name<br><input name="full_name" required class="full-width"/></label><label>Username<br><input name="username" required class="full-width"/></label><label>Email<br><input name="email" required class="full-width"/></label><label>Role<br><input name="role" value="staff" class="full-width"/></label><label>Password<br><input name="password" type="password" required class="full-width"/></label><div class="form-actions-right"><button class="cta-btn">Create</button></div></form>`);
+          document.getElementById('form-add-staff').addEventListener('submit', async function (e) { e.preventDefault(); const f=e.target; try { await window.dashboardAPI.createUser({ username:f.username.value.trim(), email:f.email.value.trim(), full_name:f.full_name.value.trim(), role:f.role.value.trim(), password:f.password.value }); showNotification('User created', 'success'); closeModal(); loadDashboardData(); } catch (err) { showNotification(err.message||'Failed', 'error'); } });
+        });
+
+        document.getElementById('manage-staff-btn')?.addEventListener('click', async function () {
+          await waitForAPI();
+          try {
+            const users = await window.dashboardAPI.fetchUsers();
+              showModal('<h3>Staff</h3><div id="users-list"></div>');
+              const ul = document.getElementById('users-list');
+              ul.innerHTML = users.map(u=>`<div class="list-item"><strong>${u.full_name||u.username}</strong> <div class="list-item-meta">${u.email||''} — ${u.role||''}</div><div class="list-item-actions"><button class="edit-user" data-id="${u.id}">Edit</button></div></div>`).join('');
+            Array.from(ul.querySelectorAll('.edit-user')).forEach(b=>b.addEventListener('click',function(){ const id=this.dataset.id; const u=users.find(x=>String(x.id)===String(id)); const html=`<h4>Edit User</h4><form id="form-edit-user" class="modal-form"><label>Full name<br><input name="full_name" value="${u.full_name||''}" class="full-width"/></label><label>Email<br><input name="email" value="${u.email||''}" class="full-width"/></label><label>Role<br><input name="role" value="${u.role||''}" class="full-width"/></label><label>New password (leave blank to keep)<br><input name="password" type="password" class="full-width"/></label><div class="form-actions-right"><button class="cta-btn">Save</button></div></form>`; document.getElementById('modal-body').innerHTML = html; document.getElementById('form-edit-user').addEventListener('submit', async function(e){ e.preventDefault(); const fd=e.target; const body={ full_name: fd.full_name.value.trim(), email: fd.email.value.trim(), role: fd.role.value.trim() }; if (fd.password.value) body.password = fd.password.value; try { await window.dashboardAPI.updateUser(id, body); showNotification('User updated','success'); closeModal(); loadDashboardData(); } catch (err) { showNotification(err.message||'Failed','error'); } }); }));
+          } catch (err) { showNotification('Failed to load users','error'); }
+        });
+
+        // Add logout and change-password quick access in header
+        const header = document.querySelector('.dashboard-header');
+        if (header) {
+        const right = document.createElement('div'); right.className='header-actions';
+        right.innerHTML = '<button id="btn-logout" class="cta-btn">Logout</button> <button id="btn-change-password" class="cta-btn">Change Password</button>';
+        header.appendChild(right);
+        document.getElementById('btn-logout').addEventListener('click', function(){ window.dashboardAPI.logout(); showNotification('Logged out','success'); });
+        document.getElementById('btn-change-password').addEventListener('click', function(){
+          showModal(`<h3>Change Password</h3><form id="form-change-password" class="modal-form"><label>Current Password<br><input name="current" type="password" required class="full-width"/></label><label>New Password<br><input name="newpass" type="password" required class="full-width"/></label><div class="form-actions-right"><button class="cta-btn">Change</button></div></form>`);
+          document.getElementById('form-change-password').addEventListener('submit', async function(e){ e.preventDefault(); const f=e.target; try { const token = localStorage.getItem('gcc_token'); if (!token) { showNotification('Not authenticated','error'); return; } // get user id from token
+            const payload = JSON.parse(atob(token.split('.')[1])); const id = payload.id; await window.dashboardAPI.updateUser(id, { password: f.newpass.value }); showNotification('Password changed','success'); closeModal(); } catch (err) { showNotification(err.message||'Failed','error'); } });
+        });
+      }
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services | Global Care Clinic</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="assets/img/logo/logo.png" alt="Global Care Clinic Logo" class="logo" />
+      <h1 class="site-name">Global Care Clinic</h1>
+    </div>
+    <nav class="navbar" role="navigation">
+      <ul class="nav-links" id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" aria-current="page">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Overlay for mobile menu -->
+  <div class="menu-overlay"></div>
+
+  <!-- Hero Banner -->
+  <section class="hero services-hero">
+    <div class="hero-overlay">
+      <h1 class="hero-title">Our Services</h1>
+      <p>Comprehensive healthcare solutions tailored to your needs.</p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="services-list">
+    <h2>What We Offer</h2>
+    <div class="service-grid">
+      <article class="service-card">
+        <img src="assets/img/services/consultation.jpg" alt="Consultation" />
+        <h3>General Consultation</h3>
+        <p>Personalized health checkups and expert medical advice for all ages.</p>
+      </article>
+
+      <article class="service-card">
+        <img src="assets/img/services/diagnostics.jpg" alt="Diagnostics" />
+        <h3>Diagnostics</h3>
+        <p>Advanced laboratory and imaging services for accurate diagnosis.</p>
+      </article>
+
+      <article class="service-card">
+        <img src="assets/img/services/emergency.jpg" alt="Emergency Care" />
+        <h3>Emergency Care</h3>
+        <p>24/7 emergency response with highly trained medical staff.</p>
+      </article>
+
+      <article class="service-card">
+        <img src="assets/img/services/surgery.jpg" alt="Surgery" />
+        <h3>Surgical Services</h3>
+        <p>Modern operating theaters and experienced surgeons for safe procedures.</p>
+      </article>
+
+      <article class="service-card">
+        <img src="assets/img/services/maternity.jpg" alt="Maternity Care" />
+        <h3>Maternity Care</h3>
+        <p>Compassionate prenatal, delivery, and postnatal care for mothers and babies.</p>
+      </article>
+
+      <article class="service-card">
+        <img src="assets/img/services/international.jpg" alt="International Patients" />
+        <h3>International Patient Services</h3>
+        <p>Dedicated support for patients traveling from abroad, including translation and logistics.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <h2>Ready to Book an Appointment?</h2>
+    <p>Contact us today and experience premium healthcare.</p>
+    <button id="openModal" class="cta-btn" type="button">Book Now</button>
+    <script>
+    (function(){
+      var btn = document.getElementById('openModal');
+      btn.addEventListener('click', function openBooking(){
+        // If page already provides a global modal opener, use it
+        if (typeof openBookingModal === 'function') { openBookingModal(); return; }
+
+        // If modal exists, just show it
+        var existing = document.getElementById('bookingModal');
+        if (existing) { existing.classList.add('open'); return; }
+
+        // Create modal markup (basic, accessible)
+        var modal = document.createElement('div');
+        modal.id = 'bookingModal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+          <div class="modal-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:9999;">
+            <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" style="background:#fff;border-radius:8px;max-width:480px;width:90%;padding:20px;position:relative;">
+              <button class="modal-close" aria-label="Close" style="position:absolute;top:10px;right:10px;background:transparent;border:0;font-size:18px;cursor:pointer;">✕</button>
+              <h3 id="bookingTitle">Book an Appointment</h3>
+              <form id="bookingForm">
+                <label for="name">Name</label><br/>
+                <input id="name" name="name" type="text" required style="width:100%;margin-bottom:8px"/><br/>
+                <label for="email">Email</label><br/>
+                <input id="email" name="email" type="email" required style="width:100%;margin-bottom:8px"/><br/>
+                <label for="service">Service</label><br/>
+                <select id="service" name="service" style="width:100%;margin-bottom:12px">
+                  <option>General Consultation</option>
+                  <option>Diagnostics</option>
+                  <option>Emergency Care</option>
+                  <option>Surgical Services</option>
+                  <option>Maternity Care</option>
+                  <option>International Patient Services</option>
+                </select>
+                <button type="submit" class="cta-btn" style="width:100%;">Submit</button>
+              </form>
+            </div>
+          </div>`;
+        document.body.appendChild(modal);
+
+        // Close handlers
+        var overlay = modal.querySelector('.modal-overlay');
+        var closeBtn = modal.querySelector('.modal-close');
+        function closeModal() { modal.remove(); btn.focus(); }
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', function(e){ if (e.target === overlay) closeModal(); });
+
+        // Simple submit handler (customize as needed)
+        modal.querySelector('#bookingForm').addEventListener('submit', function(e){
+          e.preventDefault();
+          // Replace with real submit logic
+          alert('Booking submitted. We will contact you shortly.');
+          closeModal();
+        });
+
+        // Focus first input
+        modal.querySelector('#name').focus();
+      });
+    })();
+    </script>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Global Care Clinic. All rights reserved.</p>
+  </footer>
+
+  <!-- Sticky CTA Banner -->
+  <div class="sticky-banner">
+    <a href="tel:+233502180586" class="banner-btn call">📞 Call Now</a>
+    <a href="https://wa.me/233502180586" target="_blank" rel="noopener noreferrer" class="banner-btn whatsapp">💬 WhatsApp Us</a>
+  </div>
+</body>
+</html>

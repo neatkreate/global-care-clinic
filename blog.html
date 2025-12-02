@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog | Global Care Clinic</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="assets/img/logo/logo.png" alt="Global Care Clinic Logo" class="logo" />
+      <h1 class="site-name">Global Care Clinic</h1>
+    </div>
+    <nav class="navbar" role="navigation">
+      <ul class="nav-links" id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html" aria-current="page">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Overlay for mobile menu -->
+  <div class="menu-overlay"></div>
+
+  <!-- Hero Banner -->
+  <section class="hero blog-hero">
+    <div class="hero-overlay">
+      <h1 class="hero-title">Clinic Insights & Updates</h1>
+      <p>Stay informed with expert articles, health tips, and clinic news.</p>
+    </div>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="blog-list">
+    <h2>Latest Articles</h2>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <img src="assets/img/blog/healthy-living.jpg" alt="Healthy Living" />
+        <h3>5 Tips for Healthy Living</h3>
+        <p>Discover simple lifestyle changes that can improve your health and wellbeing.</p>
+        <button type="button" class="read-more" data-target="post-healthy-living">Read More →</button>
+        <div class="full-article" id="post-healthy-living" aria-hidden="true">
+          <p><strong>5 Tips for Healthy Living</strong></p>
+          <p>Living a healthier life doesn't have to be complicated. Start with small, consistent changes: prioritize sleep by keeping a regular schedule, stay hydrated throughout the day, choose whole foods and plenty of vegetables, incorporate at least 30 minutes of moderate exercise most days, and manage stress using mindful breathing or short daily breaks. Over time these habits compound into meaningful improvements in energy, mood, and long-term health.</p>
+          <p>Our clinic offers personalized plans to help you implement these tips safely and sustainably. Contact us to schedule a wellness review.</p>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="assets/img/blog/diagnostics.jpg" alt="Diagnostics" />
+        <h3>Understanding Modern Diagnostics</h3>
+        <p>Learn how advanced imaging and lab tests help doctors provide accurate treatment.</p>
+        <button type="button" class="read-more" data-target="post-diagnostics">Read More →</button>
+        <div class="full-article" id="post-diagnostics" aria-hidden="true">
+          <p><strong>Understanding Modern Diagnostics</strong></p>
+          <p>Modern diagnostics combine laboratory testing, imaging, and clinical expertise to deliver accurate and timely information. Techniques such as high-resolution ultrasound, MRI, and advanced blood panels enable early detection and help tailor treatments to each patient. Interpreting results in context is essential—our multidisciplinary team reviews findings carefully to make clear, actionable recommendations.</p>
+          <p>If you have questions about a specific test or need to schedule a diagnostic appointment, our team is ready to help.</p>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="assets/img/blog/emergency-care.jpg" alt="Emergency Care" />
+        <h3>When to Seek Emergency Care</h3>
+        <p>Recognize the signs that require immediate medical attention and how we respond.</p>
+        <button type="button" class="read-more" data-target="post-emergency-care">Read More →</button>
+        <div class="full-article" id="post-emergency-care" aria-hidden="true">
+          <p><strong>When to Seek Emergency Care</strong></p>
+          <p>Emergency care is required when conditions are life-threatening or could worsen rapidly without immediate treatment. Examples include severe chest pain, difficulty breathing, uncontrolled bleeding, sudden weakness or loss of speech, severe head injuries, and major trauma. Our emergency department is staffed 24/7 with experienced clinicians and modern equipment to stabilize and treat urgent conditions.</p>
+          <p>If you're unsure whether to seek emergency care, call our hotline or use the clinic's teleconsultation service for guidance.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Sidebar (optional for professionalism) -->
+  <aside class="blog-sidebar">
+    <h2>Categories</h2>
+    <ul>
+      <li><a href="#">Wellness</a></li>
+      <li><a href="#">Diagnostics</a></li>
+      <li><a href="#">Emergency Care</a></li>
+      <li><a href="#">Clinic News</a></li>
+    </ul>
+
+    <h2>Recent Posts</h2>
+    <ul>
+      <li><a href="post-healthy-living.html">5 Tips for Healthy Living</a></li>
+      <li><a href="post-diagnostics.html">Understanding Modern Diagnostics</a></li>
+      <li><a href="post-emergency-care.html">When to Seek Emergency Care</a></li>
+    </ul>
+  </aside>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Global Care Clinic. All rights reserved.</p>
+  </footer>
+
+  <!-- Sticky CTA Banner -->
+  <div class="sticky-banner">
+    <a href="tel:+233502180586" class="banner-btn call">📞 Call Now</a>
+    <a href="https://wa.me/233502180586" target="_blank" rel="noopener noreferrer" class="banner-btn whatsapp">💬 WhatsApp Us</a>
+  </div>
+</body>
+</html>

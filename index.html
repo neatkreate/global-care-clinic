@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Care Clinic</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="assets/img/logo/logo.png" alt="Global Care Clinic Logo" class="logo">
+      <h1 class="site-name">Global Care Clinic</h1>
+    </div>
+    <nav class="navbar" role="navigation">
+      <ul class="nav-links" id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+      <div class="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1>Global Care Clinic</h1>
+      <h2>Premium Healthcare, Anytime, Anywhere</h2>
+      <p>Trusted by patients locally and internationally.</p>
+      <a href="services.html" class="cta-btn">Explore Services</a>
+      <button id="openModal" class="cta-btn secondary">Book Appointment</button>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="services-preview">
+    <h2>Our Key Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <h3>General Consultation</h3>
+        <p>Comprehensive health checkups and advice.</p>
+      </div>
+      <div class="card">
+        <h3>Diagnostics</h3>
+        <p>Modern lab and imaging facilities.</p>
+      </div>
+      <div class="card">
+        <h3>Emergency Care</h3>
+        <p>24/7 emergency response and treatment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Our Patients Say</h2>
+    <blockquote>
+      “Global Care Clinic gave me world-class treatment with compassion.”  
+      <cite>— Sarah, UK</cite>
+    </blockquote>
+    <blockquote>
+      “Professional doctors and modern facilities. Highly recommended.”  
+      <cite>— Kwame, Ghana</cite>
+    </blockquote>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Global Care Clinic. All rights reserved.</p>
+  </footer>
+
+  <!-- Reservation Modal -->
+  <div id="reservationModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <span class="close" aria-label="Close">&times;</span>
+      <h2>Book an Appointment</h2>
+      <form id="reservationForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" placeholder="Your Phone" required>
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Describe your need" required></textarea>
+        <button type="submit" class="cta-btn">Send via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sticky CTA Banner -->
+  <div class="sticky-banner">
+    <a href="tel:+233502180586" class="banner-btn call">📞 Call Now</a>
+    <a href="https://wa.me/233502180586" target="_blank" rel="noopener noreferrer" class="banner-btn whatsapp">💬 WhatsApp Us</a>
+  </div>
+
+  <!-- Overlay for mobile menu -->
+  <div class="menu-overlay"></div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "articles": [
+    {
+      "id": "post-healthy-living",
+      "title": "5 Tips for Healthy Living",
+      "date": "2025-11-20",
+      "author": "Dr. Ama Mensah",
+      "category": "Wellness",
+      "excerpt": "Discover simple lifestyle changes that can improve your health and wellbeing.",
+      "content": "Living a healthier life doesn't have to be complicated. Start with small, consistent changes: prioritize sleep by keeping a regular schedule, stay hydrated throughout the day, choose whole foods and plenty of vegetables, incorporate at least 30 minutes of moderate exercise most days, and manage stress using mindful breathing or short daily breaks. Over time these habits compound into meaningful improvements in energy, mood, and long-term health. Our clinic offers personalized plans to help you implement these tips safely and sustainably. Contact us to schedule a wellness review.",
+      "image": "assets/img/blog/healthy-living.jpg"
+    },
+    {
+      "id": "post-diagnostics",
+      "title": "Understanding Modern Diagnostics",
+      "date": "2025-11-15",
+      "author": "Dr. Kwame Boateng",
+      "category": "Diagnostics",
+      "excerpt": "Learn how advanced imaging and lab tests help doctors provide accurate treatment.",
+      "content": "Modern diagnostics combine laboratory testing, imaging, and clinical expertise to deliver accurate and timely information. Techniques such as high-resolution ultrasound, MRI, and advanced blood panels enable early detection and help tailor treatments to each patient. Interpreting results in context is essential—our multidisciplinary team reviews findings carefully to make clear, actionable recommendations. If you have questions about a specific test or need to schedule a diagnostic appointment, our team is ready to help.",
+      "image": "assets/img/blog/diagnostics.jpg"
+    },
+    {
+      "id": "post-emergency-care",
+      "title": "When to Seek Emergency Care",
+      "date": "2025-11-10",
+      "author": "Dr. Sarah Johnson",
+      "category": "Emergency Care",
+      "excerpt": "Recognize the signs that require immediate medical attention and how we respond.",
+      "content": "Emergency care is required when conditions are life-threatening or could worsen rapidly without immediate treatment. Examples include severe chest pain, difficulty breathing, uncontrolled bleeding, sudden weakness or loss of speech, severe head injuries, and major trauma. Our emergency department is staffed 24/7 with experienced clinicians and modern equipment to stabilize and treat urgent conditions. If you're unsure whether to seek emergency care, call our hotline or use the clinic's teleconsultation service for guidance.",
+      "image": "assets/img/blog/emergency-care.jpg"
+    },
+    {
+      "id": "post-maternal-health",
+      "title": "Maternal Health and Prenatal Care",
+      "date": "2025-11-05",
+      "author": "Dr. Ama Mensah",
+      "category": "Wellness",
+      "excerpt": "Essential information about prenatal care, nutrition, and preparing for childbirth.",
+      "content": "Prenatal care is crucial for ensuring the health and safety of both mother and baby. Regular checkups help monitor fetal development, detect potential complications early, and prepare for labor. Key components include ultrasound imaging, blood tests, blood pressure monitoring, and nutritional guidance. Our obstetric team provides compassionate, comprehensive care throughout pregnancy and delivery. We also offer postnatal support and newborn care services to ensure a smooth transition to parenthood.",
+      "image": "assets/img/blog/maternal-health.jpg"
+    },
+    {
+      "id": "post-nutrition",
+      "title": "Nutrition Guide for Disease Prevention",
+      "date": "2025-10-28",
+      "author": "Dr. Kwame Boateng",
+      "category": "Wellness",
+      "excerpt": "Learn how proper nutrition can prevent chronic diseases and boost immunity.",
+      "content": "A balanced diet is one of the most powerful tools for preventing chronic diseases like heart disease, diabetes, and obesity. Focus on whole grains, lean proteins, colorful vegetables, and healthy fats. Limit processed foods, added sugars, and excessive salt. Hydration is equally important—aim for 8-10 glasses of water daily. Our nutrition specialists can create personalized meal plans tailored to your health goals and medical conditions. Schedule a consultation to start your journey toward better health through nutrition.",
+      "image": "assets/img/blog/nutrition.jpg"
+    },
+    {
+      "id": "post-5",
+      "title": "10 Daily Habits",
+      "excerpt": "",
+      "content": "why u should eat early",
+      "created_at": "2025-12-01T01:11:41.058Z"
+    },
+    {
+      "id": "post-5",
+      "title": "10 habits",
+      "excerpt": "",
+      "content": "100 foods to avoid",
+      "created_at": "2025-12-01T01:12:48.329Z"
+    },
+    {
+      "id": "test-post-1764552204767",
+      "title": "Test Blog Post 1764552204767",
+      "excerpt": "A test blog post excerpt",
+      "content": "This is the full content of a test blog post for unit testing.",
+      "created_at": "2025-12-01T01:23:24.767Z"
+    },
+    {
+      "id": "test-post-1764552348512",
+      "title": "Test Blog Post 1764552348512",
+      "excerpt": "A test blog post excerpt",
+      "content": "This is the full content of a test blog post for unit testing.",
+      "created_at": "2025-12-01T01:25:48.512Z"
+    },
+    {
+      "id": "test-post-1764552359756",
+      "title": "Test Blog Post 1764552359756",
+      "excerpt": "A test blog post excerpt",
+      "content": "This is the full content of a test blog post for unit testing.",
+      "created_at": "2025-12-01T01:25:59.756Z"
+    },
+    {
+      "id": "test-post-1764552414120",
+      "title": "Test Blog Post 1764552414120",
+      "excerpt": "A test blog post excerpt",
+      "content": "This is the full content of a test blog post for unit testing.",
+      "created_at": "2025-12-01T01:26:54.120Z"
+    }
+  ]
+}

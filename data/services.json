@@ -1,0 +1,93 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "General Consultation",
+      "description": "Comprehensive health checkups and personalized medical advice from experienced physicians.",
+      "icon": "🏥",
+      "price": "$50",
+      "duration": "30 minutes",
+      "features": [
+        "Initial health assessment",
+        "Blood pressure and vital signs check",
+        "Medical history review",
+        "Preventive care recommendations"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Diagnostics",
+      "description": "Modern lab and imaging facilities including blood tests, ultrasound, and X-ray services.",
+      "icon": "🔬",
+      "price": "$75-200",
+      "duration": "Varies",
+      "features": [
+        "Blood tests and analysis",
+        "Ultrasound imaging",
+        "X-ray services",
+        "ECG and cardiac tests",
+        "Rapid results delivery"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Emergency Care",
+      "description": "24/7 emergency response and acute treatment for urgent medical conditions.",
+      "icon": "🚑",
+      "price": "Call for pricing",
+      "duration": "Immediate",
+      "features": [
+        "24/7 availability",
+        "Experienced emergency team",
+        "Advanced life support equipment",
+        "Rapid stabilization and treatment",
+        "Ambulance services available"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Pediatrics",
+      "description": "Specialized healthcare for infants, children, and adolescents with compassionate care.",
+      "icon": "👶",
+      "price": "$40",
+      "duration": "30-45 minutes",
+      "features": [
+        "Well-child visits",
+        "Vaccinations and immunizations",
+        "Growth and development tracking",
+        "Acute illness treatment",
+        "Child-friendly environment"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Surgery",
+      "description": "Minimally invasive and general surgical procedures performed by renowned surgeons.",
+      "icon": "🔪",
+      "price": "Consultation + procedure",
+      "duration": "Varies",
+      "features": [
+        "Pre-operative assessment",
+        "Minimally invasive techniques",
+        "General anesthesia available",
+        "Post-operative care and follow-up",
+        "Modern surgical suite"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Wellness Programs",
+      "description": "Holistic health programs including fitness guidance, nutrition counseling, and mental wellness.",
+      "icon": "🧘",
+      "price": "$30-100",
+      "duration": "Session-based",
+      "features": [
+        "Personalized fitness plans",
+        "Nutritional counseling",
+        "Stress management",
+        "Mental health support",
+        "Preventive health coaching"
+      ]
+    }
+  ]
+}

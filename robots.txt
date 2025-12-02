@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# If you want to disallow API endpoints, uncomment the next line
+# Disallow: /api/
+
+# Sitemap location - replace with your deployed domain when available
+Sitemap: https://your-domain.example/sitemap.xml
