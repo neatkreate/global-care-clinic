@@ -47,3 +47,27 @@ If you prefer, I can:
 - Replace placeholders in `sitemap.xml` and `robots.txt` after you give the deployed Render URL.
 - Verify the files are reachable and run the curl checks.
 - Walk you through Search Console verification and sitemap submission step-by-step.
+
+Verification options (quick copy/paste)
+
+- HTML file verification (recommended when using URL-prefix property):
+   1. In Search Console choose "HTML file" verification.
+   2. Google will provide a file named like `google1234567890abcdef.html`.
+   3. Upload that file to your site root — place it at the repo root so it is served at `https://global-care-clinic.onrender.com/google1234567890abcdef.html`.
+   4. Click "Verify" in Search Console.
+
+- Meta tag verification (easy for URL-prefix):
+   1. Choose "HTML tag" verification in Search Console.
+   2. Google supplies a meta tag such as:
+
+       ```html
+       <meta name="google-site-verification" content="1234567890abcdef" />
+       ```
+
+   3. Add this tag inside the `<head>` of `index.html` (or your main page) and commit.
+   4. Click "Verify".
+
+- DNS TXT verification (recommended for domain property):
+   1. Choose "Domain" property in Search Console.
+   2. Google gives a DNS TXT record to add to your domain provider.
+   3. Add the TXT record in your DNS settings and wait for it to propagate, then click "Verify".
